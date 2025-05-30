@@ -2,7 +2,7 @@ name: Deploy Vite App to GitHub Pages
 
 on:
   push:
-    branches: [main]  # Trigger on push to main
+    branches: [main]
 
 permissions:
   contents: read
@@ -13,8 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -27,7 +26,7 @@ jobs:
       - name: Build the Vite app
         run: npm run build
 
-      - name: Upload build output for GitHub Pages
+      - name: Upload build output
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./dist
